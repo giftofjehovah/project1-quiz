@@ -8,4 +8,78 @@ body {
     list-style: none;
     font-family: Open Sans;
     font-size: 14px;
+    background-color: #AC6C82;
+    color: white;
+}
+
+h1 {
+  font-size: 6em;
+}
+
+h2 {
+  font-size: 3.6em;
+}
+
+h3 {
+  font-size: 1.6em;
+}
+
+main {
+  margin: 200px auto;
+  margin-bottom: 20px;
+  height: 280px;
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  /*border: 1px solid;*/
+  /*flex: 1;*/
+}
+
+section {
+  /*border: 1px solid;*/
+  flex: 1;
+  margin-top: 20px;
+}
+
+.container {
+  flex: 2;
+  display: flex;
+}
+
+.button {
+  flex: 1;
+  text-align: center;
+  padding-top: 25px;
+  color: #AC6C82;
+}
+
+.playerScore {
+  text-align: center;
+}
+
+#player1Score {
+  color: #FFBC67;
+}
+
+#player2Score {
+  color: #455C7B;
+}
+
+li {
+  display: inline;
+  margin: 5px;
+  font-size: 2em;
+}
+
+#\30{
+  background-color: #FFBC67;
+  margin: 0 5px 0 0;
+}
+
+#\31 {
+  background-color: #455C7B;
+  margin: 0 0 0 5px;
 }

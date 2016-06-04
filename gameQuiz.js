@@ -14,10 +14,16 @@ var question4 = new Question('Humans can distinguish between over a trillion dif
 var question5 = new Question('Adults have fewer bones than babies do.', ['True', 'False'], 0);
 var question6 = new Question('Napoleon Bonaparte was extremely short.', ['True', 'False'], 1);
 var question7 = new Question('Goldfish only have a memory of three seconds.', ['True', 'False'], 1);
+var question8 = new Question('Buzz Aldrin was the first man to urinate on the moon.', ['True', 'False'], 0);
+var question9 = new Question('Humans can’t breathe and swallow at the same time.', ['True', 'False'], 0);
+var question10 = new Question('The popular image of Santa Claus – chubby, bearded, in red and white clothes – was invented by Coca-Cola for an ad campaign.', ['True', 'False'], 1);
+var question11 = new Question('The top of the Eiffel Tower leans away from the sun.', ['True', 'False'], 0);
+var question12 = new Question('The owner of the company that makes Segways died after accidentally driving his Segway off a cliff.', ['True', 'False'], 0);
+var question13 = new Question('The first floppy measured 8 in. (200 mm) in diameter.', ['True', 'False'], 0);
 
 var quiz = {
   currentQuestion: 0,
-  questions: [question0, question1, question2, question3, question4, question5, question6, question7],
+  questions: [question0, question1, question2, question3, question4, question5, question6, question7, question8, question9, question10, question11, question12, question13],
   isGameOver: false,
   player1Points: 0,
   player2Points: 0
@@ -47,7 +53,7 @@ function numberOfAnswers () {
 // return a boolean true/false if the answer is correct
 function playTurn (choice) {
   if (isGameOver()) return false;
-  if (choice === correctAnswer()) {
+  if (choice == correctAnswer()) {
     var x = true;
     if (quiz.currentQuestion % 2 === 0) {
       quiz.player1Points++;
@@ -59,7 +65,7 @@ function playTurn (choice) {
     x = false;
   }
   quiz.currentQuestion++;
-  if (currentQuestion() === numberOfQuestions()) {
+  if (currentQuestion() === numberOfQuestions() - 1) {
     quiz.isGameOver = true;
   }
   return x;
@@ -67,9 +73,7 @@ function playTurn (choice) {
 
 // return a true or false if the quiz is over
 function isGameOver () {
-  if (whoWon()) {
-    return true;
-  }
+  if (quiz.isGameOver) return true;
   return false;
 }
 
@@ -93,11 +97,31 @@ function restart () {
 
 // =========== jquery starts here ========================================================
 var words = $('#words');
-var buttonTrue = $('#true');
-var buttonFalse = $('#false');
-
-function updateDisplay () {
-  words.text(quiz.questions[quiz.currentQuestion].question);
-}
+var buttonTrue = $('#0');
+var buttonFalse = $('#1');
+var button = $('.button');
+var player1Score = $('#player1Score');
+var player2Score = $('#player2Score');
+var Qnumber = $('#Q');
 
 updateDisplay();
+function updateDisplay () {
+  Qnumber.text('Q' + (currentQuestion() + 1));
+  words.text(quiz.questions[currentQuestion()].question);
+  player1Score.text(quiz.player1Points);
+  player2Score.text(quiz.player2Points);
+  if (isGameOver()) {
+    Qnumber.text('^.^');
+    if (whoWon() === 3) {
+      words.text("It's a Draw!");
+    } else {
+      words.text('Game Over! Player ' + whoWon() + ' wins!');
+    }
+  }
+}
+
+button.click(function () {
+  var choice = this.id;
+  playTurn(choice);
+  updateDisplay();
+});
