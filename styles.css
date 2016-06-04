@@ -6,14 +6,13 @@ body {
     padding: 0px;
     text-decoration: none;
     list-style: none;
-    font-family: Futura;
+    font-family: 'Open Sans', sans-serif;
     font-size: 14px;
     background-color: #AC6C82;
     color: white;
 }
 
 h1 {
-  font-family: Futura;
   font-size: 6em;
 }
 
